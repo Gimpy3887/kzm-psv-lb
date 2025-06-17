@@ -139,6 +139,7 @@ input[type='search'] {
   border-radius: 16px 0 0 16px;
   background-color: #f1f3f5;
   color: #2a2520;
+  cursor: pointer;
 }
 
 .leaderboard__filter--per-round {
@@ -147,6 +148,7 @@ input[type='search'] {
   border-radius: 0 16px 16px 0;
   background-color: #f1f3f5;
   color: #2a2520;
+  cursor: pointer;
 }
 
 #freq {
@@ -156,6 +158,7 @@ input[type='search'] {
   background-color: #f1f3f5;
   color: #2a2520;
   font-size: inherit;
+  cursor: pointer;
 }
 
 .leaderboard-table {
