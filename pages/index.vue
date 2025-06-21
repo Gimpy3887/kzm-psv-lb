@@ -148,6 +148,7 @@ const filteredPlayers = computed(() => {
           <th>Online ID</th>
           <th>Kills</th>
           <th>Deaths</th>
+          <th>K/D Ratio</th>
           <th>Vektan</th>
           <th>Games Played</th>
           <th>Distance</th>
@@ -159,6 +160,7 @@ const filteredPlayers = computed(() => {
           <td>{{ player.OnlineID }}</td>
           <td>{{ player.TotalKills.toLocaleString() }}</td>
           <td>{{ player.TotalDeaths.toLocaleString() }}</td>
+          <td>{{ (player.TotalKills / player.TotalDeaths).toFixed(2) }}</td>
           <td>{{ player.TotalVdollar.toLocaleString() }}</td>
           <td class="leaderboard-table__games-played">
             {{ player.TotalWins.toLocaleString() }}
