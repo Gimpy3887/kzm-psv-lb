@@ -213,12 +213,13 @@ const perRoundFilteredPlayers = computed(() => {
           </td>
           <td>{{ player.TotalDistance.toLocaleString() }}m</td>
         </tr>
-        <tr v-else-if="activeFilter == 'perRound'" v-for="(player, index) in filteredPlayers" bgcolor="#F5F3F1">
+        <tr v-else-if="activeFilter == 'perRound'" v-for="(player, index) in perRoundFilteredPlayers" bgcolor="#F5F3F1">
           <td>{{ index + 1 }}</td>
           <td>{{ player.OnlineID }}</td>
-          <td>{{ perRoundCalc(player.TotalKills, player.GamesPlayed) }}</td>
-          <td>{{ perRoundCalc(player.TotalDeaths, player.GamesPlayed) }}</td>
-          <td>{{ perRoundCalc(player.TotalVdollar, player.GamesPlayed) }}</td>
+          <td>{{ player.TotalKills.toLocaleString() }}</td>
+          <td>{{ player.TotalDeaths.toLocaleString() }}</td>
+          <td>{{ (player.TotalKills / player.TotalDeaths).toFixed(2) }}</td>
+          <td>{{ player.TotalVdollar.toLocaleString() }}</td>
           <td class="leaderboard-table__games-played">
             {{ player.TotalWins.toLocaleString() }}
             <img src="/images/arrow_up.svg" alt="Games won." />
