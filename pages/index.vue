@@ -34,6 +34,23 @@ const filteredPlayers = computed(() => {
   )
 })
 
+const lbPerRoundData = computed(() => {
+  return [...lb_data.value]
+    .map(player => ({
+      ...player,
+      TotalKills: Math.round(player.TotalKills / player.GamesPlayed),
+      TotalDeaths: Math.round(player.TotalDeaths / player.GamesPlayed),
+      TotalVdollar: Math.round(player.TotalVdollar / player.GamesPlayed),
+      TotalDistance: Math.round(player.TotalDistance / player.GamesPlayed)
+    }))
+    .sort((a, b) => b.TotalVdollar - a.TotalVdollar)
+})
+
+const perRoundFilteredPlayers = computed(() => {
+  return lbPerRoundData.value.filter(player =>
+    player.OnlineID.toLowerCase().includes(search.value.toLowerCase())
+  )
+})
 </script>
 
 <template>
