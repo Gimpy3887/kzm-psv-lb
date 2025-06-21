@@ -61,13 +61,21 @@ const perRoundFilteredPlayers = computed(() => {
       </div>
       <img src="/images/merc_sniper_profile.png" alt="" />
       <div class="top-three-info">
-        <div class="top-three-info__second-place-username">
+        <div v-if="activeFilter == 'total'" class="top-three-info__second-place-username">
           {{ lb_data[1].OnlineID }}
         </div>
+        <div v-else-if="activeFilter == 'perRound'" class="top-three-info__second-place-username">
+          {{ lbPerRoundData[1].OnlineID }}
+        </div>
         <div>
-          <div>
+          <div v-if="activeFilter == 'total'">
             <img src="/images/vektan_dollar.svg" alt="" />{{
               lb_data[1].TotalVdollar.toLocaleString()
+            }}
+          </div>
+          <div v-else-if="activeFilter == 'perRound'">
+            <img src="/images/vektan_dollar.svg" alt="" />{{
+              lbPerRoundData[1].TotalVdollar.toLocaleString()
             }}
           </div>
         </div>
@@ -80,15 +88,24 @@ const perRoundFilteredPlayers = computed(() => {
       </div>
       <img src="/images/merc_ar_profile.png" alt="Vektan currency symbol." />
       <div class="top-three-info">
-        <div class="top-three-info__first-place-username">
+        <div v-if="activeFilter == 'total'" class="top-three-info__first-place-username">
           {{ lb_data[0].OnlineID }}
         </div>
+        <div v-else-if="activeFilter == 'perRound'" class="top-three-info__first-place-username">
+          {{ lbPerRoundData[0].OnlineID }}
+        </div>
         <div>
-          <div>
+          <div v-if="activeFilter == 'total'">
             <img
               src="/images/vektan_dollar.svg"
               alt="Vektan currency symbol."
             />{{ lb_data[0].TotalVdollar.toLocaleString() }}
+          </div>
+          <div v-else-if="activeFilter == 'perRound'">
+            <img
+              src="/images/vektan_dollar.svg"
+              alt="Vektan currency symbol."
+            />{{ lbPerRoundData[0].TotalVdollar.toLocaleString() }}
           </div>
         </div>
       </div>
@@ -105,15 +122,24 @@ const perRoundFilteredPlayers = computed(() => {
         alt="Vektan currency symbol."
       />
       <div class="top-three-info">
-        <div class="top-three-info__third-place-username">
+        <div v-if="activeFilter == 'total'" class="top-three-info__third-place-username">
           {{ lb_data[2].OnlineID }}
         </div>
+        <div v-else-if="activeFilter == 'perRound'" class="top-three-info__third-place-username">
+          {{ lbPerRoundData[2].OnlineID }}
+        </div>
         <div>
-          <div>
+          <div v-if="activeFilter == 'total'">
             <img
               src="/images/vektan_dollar.svg"
               alt="Vektan currency symbol."
             />{{ lb_data[2].TotalVdollar.toLocaleString() }}
+          </div>
+          <div v-if="activeFilter == 'perRound'">
+            <img
+              src="/images/vektan_dollar.svg"
+              alt="Vektan currency symbol."
+            />{{ lbPerRoundData[2].TotalVdollar.toLocaleString() }}
           </div>
         </div>
       </div>
