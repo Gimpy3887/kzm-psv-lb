@@ -91,7 +91,7 @@ html {
 }
 
 .leaderboard__filter-parent-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   padding: 10px 0px;
 }
 
@@ -114,7 +114,7 @@ input[type='search'] {
 }
 
 .leaderboard__search-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   padding: 10px 0;
 }
 
