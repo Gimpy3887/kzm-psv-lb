@@ -218,52 +218,64 @@ const perRoundFilteredPlayers = computed(() => {
       </div>
     </div>
 
-    <table class="leaderboard-table">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Online ID</th>
-          <th>Kills</th>
-          <th>Deaths</th>
-          <th>K/D Ratio</th>
-          <th>Vektan</th>
-          <th>Games Played</th>
-          <th>Distance</th>
-        </tr>
-      </thead>
-      <tbody id="leaderboard-body">
-        <tr v-if="activeFilter == 'total'" v-for="(player, index) in filteredPlayers" bgcolor="#F5F3F1">
-          <td>{{ index + 1 }}</td>
-          <td>{{ player.OnlineID }}</td>
-          <td>{{ player.TotalKills.toLocaleString() }}</td>
-          <td>{{ player.TotalDeaths.toLocaleString() }}</td>
-          <td>{{ (player.TotalKills / player.TotalDeaths).toFixed(2) }}</td>
-          <td>{{ player.TotalVdollar.toLocaleString() }}</td>
-          <td class="leaderboard-table__games-played">
-            {{ player.TotalWins.toLocaleString() }}
-            <img src="/images/arrow_up.svg" alt="Games won." />
-            {{ player.TotalLosses.toLocaleString() }}
-            <img src="/images/arrrow_down.svg" alt="Games lost." />
-          </td>
-          <td>{{ player.TotalDistance.toLocaleString() }}m</td>
-        </tr>
-        <tr v-else-if="activeFilter == 'perRound'" v-for="(player, index) in perRoundFilteredPlayers" bgcolor="#F5F3F1">
-          <td>{{ index + 1 }}</td>
-          <td>{{ player.OnlineID }}</td>
-          <td>{{ player.TotalKills.toLocaleString() }}</td>
-          <td>{{ player.TotalDeaths.toLocaleString() }}</td>
-          <td>{{ (player.TotalKills / player.TotalDeaths).toFixed(2) }}</td>
-          <td>{{ player.TotalVdollar.toLocaleString() }}</td>
-          <td class="leaderboard-table__games-played">
-            {{ player.TotalWins.toLocaleString() }}
-            <img src="/images/arrow_up.svg" alt="Games won." />
-            {{ player.TotalLosses.toLocaleString() }}
-            <img src="/images/arrrow_down.svg" alt="Games lost." />
-          </td>
-          <td>{{ perRoundCalc(player.TotalDistance, player.GamesPlayed) }}m</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="tscroll">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th class="stick">Rank</th>
+            <th>Online ID</th>
+            <th>Kills</th>
+            <th>Deaths</th>
+            <th>K/D</th>
+            <th>Vektan</th>
+            <th>Games Played</th>
+            <th>Distance</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <tr
+            v-if="activeFilter == 'total'"
+            v-for="player in filteredPlayers"
+            bgcolor="#F5F3F1"
+          >
+            <td class="stick">{{ player.Rank }}</td>
+            <td>{{ player.OnlineID }}</td>
+            <td>{{ player.TotalKills.toLocaleString() }}</td>
+            <td>{{ player.TotalDeaths.toLocaleString() }}</td>
+            <td>{{ (player.TotalKills / player.TotalDeaths).toFixed(2) }}</td>
+            <td>{{ player.TotalVdollar.toLocaleString() }}</td>
+            <td class="leaderboard-table__games-played">
+              {{ player.TotalWins.toLocaleString() }}
+              <img src="/images/arrow_up.svg" alt="Games won." />
+              {{ player.TotalLosses.toLocaleString() }}
+              <img src="/images/arrrow_down.svg" alt="Games lost." />
+            </td>
+            <td>{{ player.TotalDistance.toLocaleString() }}m</td>
+          </tr>
+          <tr
+            v-else-if="activeFilter == 'perRound'"
+            v-for="player in perRoundFilteredPlayers"
+            bgcolor="#F5F3F1"
+          >
+            <td class="stick">{{ player.Rank }}</td>
+            <td>{{ player.OnlineID }}</td>
+            <td>{{ player.TotalKills.toLocaleString() }}</td>
+            <td>{{ player.TotalDeaths.toLocaleString() }}</td>
+            <td>{{ (player.TotalKills / player.TotalDeaths).toFixed(2) }}</td>
+            <td>{{ player.TotalVdollar.toLocaleString() }}</td>
+            <td class="leaderboard-table__games-played">
+              {{ player.TotalWins.toLocaleString() }}
+              <img src="/images/arrow_up.svg" alt="Games won." />
+              {{ player.TotalLosses.toLocaleString() }}
+              <img src="/images/arrrow_down.svg" alt="Games lost." />
+            </td>
+            <td>
+              {{ perRoundCalc(player.TotalDistance, player.GamesPlayed) }}m
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 <style scoped>
