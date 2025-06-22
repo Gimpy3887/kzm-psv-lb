@@ -210,7 +210,11 @@ const perRoundFilteredPlayers = computed(() => {
 
       <div class="leaderboard__search">
         <div class="leaderboard__search-label">Search</div>
-        <input v-model="search" class="leaderboard__search-form" type="search" />
+        <input
+          v-model="search"
+          class="leaderboard__search-form"
+          type="search"
+        />
       </div>
     </div>
 
