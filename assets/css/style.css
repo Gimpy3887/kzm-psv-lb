@@ -123,16 +123,6 @@ input[type='search'] {
   color: #e5e2de;
 }
 
-/* .active {
-  background-color: #734b23 ;
-  color: #f5f3f1;
-} */
-
-/* .score-unselected {
-  background-color: #f1f3f5 !important;
-  color: #2a2520 !important;
-}
- */
 .leaderboard__filter--total {
   padding: 4px 32px;
   border: 2px solid #e5e2de;
