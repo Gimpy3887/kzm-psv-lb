@@ -280,7 +280,7 @@ const perRoundFilteredPlayers = computed(() => {
 </template>
 <style scoped>
 .active {
-  background-color: #734b23 ;
+  background-color: #734b23;
   color: #f5f3f1;
   cursor: default;
 }
