@@ -23,34 +23,46 @@ function setFilter(type) {
 }
 
 function perRoundCalc(playerStat, gamesPlayed) {
-  return Math.round(playerStat / gamesPlayed).toLocaleString()
+  return Math.round(playerStat / gamesPlayed).toLocaleString();
 }
 
 let search = ref("");
 
-const filteredPlayers = computed(() => {
-  return lb_data.value.filter(player =>
-    player.OnlineID.toLowerCase().includes(search.value.toLowerCase())
-  )
+const lbTotalData = computed(() => {
+  return [...lb_data.value]
+    .map((player, index) => ({
+      ...player,
+      Rank: index + 1
+    }))
 })
+
+const filteredPlayers = computed(() => {
+  return lbTotalData.value.filter((player) =>
+    player.OnlineID.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
 
 const lbPerRoundData = computed(() => {
   return [...lb_data.value]
-    .map(player => ({
+    .map((player) => ({
       ...player,
       TotalKills: Math.round(player.TotalKills / player.GamesPlayed),
       TotalDeaths: Math.round(player.TotalDeaths / player.GamesPlayed),
       TotalVdollar: Math.round(player.TotalVdollar / player.GamesPlayed),
-      TotalDistance: Math.round(player.TotalDistance / player.GamesPlayed)
+      TotalDistance: Math.round(player.TotalDistance / player.GamesPlayed),
     }))
     .sort((a, b) => b.TotalVdollar - a.TotalVdollar)
-})
+    .map((player, index) => ({
+      ...player,
+      Rank: index + 1
+    }))
+});
 
 const perRoundFilteredPlayers = computed(() => {
-  return lbPerRoundData.value.filter(player =>
+  return lbPerRoundData.value.filter((player) =>
     player.OnlineID.toLowerCase().includes(search.value.toLowerCase())
-  )
-})
+  );
+});
 </script>
 
 <template>
