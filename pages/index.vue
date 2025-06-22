@@ -10,9 +10,9 @@ watch(selected, async (selectedValue) => {
     daily: `https://mirage.yuv.pink/api/v1/leaderboard/daily`,
     weekly: `https://mirage.yuv.pink/api/v1/leaderboard/weekly`,
     monthly: `https://mirage.yuv.pink/api/v1/leaderboard/monthly`,
-  }
+  };
 
-  const lb_resp = await $fetch(freqEndpts[selectedValue])
+  const lb_resp = await $fetch(freqEndpts[selectedValue]);
   lb_data.value = lb_resp.leaderboard;
 });
 
